@@ -1,5 +1,5 @@
 from random import randint
-from PIL import Image
+from matplotlib import pyplot as pp
 def getMed(arr):
         i,j = 0,0
         while i < len(arr):
@@ -40,18 +40,19 @@ def go(i=10,**kwargs):
                 bs.append(point[1]-(dets[-1]*point[0]))
     
     return sum(dets)/len(dets),sum(bs)/len(bs)
-x = Image.new("RGB",(20,20),"white")
-l = []
-data = ((5,2),(4,5),(6,3),(7,9))
-m,n = go(array=data)
-y = lambda x: m*x+n
-for i in range(10):
-        if y(i) < 0: continue
-        l.append((i,round(y(i))))
-for t in l:
-        print(t)
-        x.putpixel(t,(0,0,0))
-for t in data:
-        x.putpixel(t,(255,0,0))
-x.show()
-x.close()
+def k(x,m,n,data):
+	p = lambda i: m*i + n
+	pp.axis((0,20,0,20))
+	a,y =[],[]
+	for i in data: a.append(i[0]),y.append(i[1])
+	pp.plot(a,y,'bo')
+	pp.plot(x,p(x),'k')
+	pp.show()
+
+if __name__ == "__main__":
+        import numpy as _
+        x = _.arange(0,10,0.01)
+        data = ((1,2),(5,4),(8,5))
+        m,n = go(array=data)
+        k(x,m,n,data)
+
