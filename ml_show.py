@@ -53,3 +53,5 @@ for t in l:
         x.putpixel(t,(0,0,0))
 for t in data:
         x.putpixel(t,(255,0,0))
+x.show()
+x.close()
