@@ -1,4 +1,7 @@
 from random import randint
+import sys
+new_txt = sys.argv[1] + ' '
+word = new_txt[:-1]
 def findWords(word,string,split=' ',start=None,stop=None):
     string_splited = string[start:stop].split(split)
     words = []
@@ -12,11 +15,12 @@ def findWords(word,string,split=' ',start=None,stop=None):
     if words == []: return False
     return words
 file = open("input.txt",'r')
-txt = file.read().lower()
+txt = ''
+for line in file:
+    txt += line.lower().replace("\n","")
 file.close()
 del file
-new_txt = 'ford '
-word = 'ford'
+
 for i in range(100):
     if not findWords: break
     words_moment = findWords(word,txt)
@@ -24,4 +28,8 @@ for i in range(100):
     word_moment = words_moment[randint(0,le)] if le>1 else words_moment[0]
     new_txt += word_moment + ' '
     word = word_moment
-open("output.txt","w").write(new_txt)
+file =  open("output.txt","w")
+file.write(new_txt)
+file.close()
+del file
+print(new_txt)
