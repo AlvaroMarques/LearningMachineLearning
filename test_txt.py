@@ -1,5 +1,6 @@
 from random import randint
 import sys
+from os import getcwd
 new_txt = sys.argv[1] + ' '
 word = new_txt[:-1]
 def findWords(word,string,split=' ',start=None,stop=None):
@@ -14,10 +15,10 @@ def findWords(word,string,split=' ',start=None,stop=None):
         start_fs += current_index + 1
     if words == []: return False
     return words
-file = open("input.txt",'r')
+file = open(r"%s/input.txt"%getcwd(),'r')
 txt = ''
 for line in file:
-    txt += line.lower().replace("\n","")
+    txt += line.lower()
 file.close()
 del file
 
