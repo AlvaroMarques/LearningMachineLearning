@@ -22,7 +22,7 @@ for line in file:
 file.close()
 del file
 
-for i in range(100 if not 2 in argv else argv[2] ):
+for i in range(100 if not 2 in sys.argv else sys.argv[2] ):
     if not findWords: break
     words_moment = findWords(word,txt)
     le = len(words_moment)-1
